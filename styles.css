@@ -1,0 +1,36 @@
+#board {
+    padding: 3em 0 0 0;
+    text-align: center;
+}
+
+div.row > div {
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+
+.row {
+    clear: both;
+    margin: 0 auto;
+    width: 302px;
+}
+
+.top {
+    border-bottom: 1px black solid;
+}
+
+.bottom {
+    border-top: 1px black solid;
+}
+
+.right {
+    border-left: 1px black solid;
+}
+
+.left {
+    border-right: 1px black solid;
+}
+
+
+
+
