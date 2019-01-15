@@ -1,6 +1,7 @@
 #board {
     padding: 3em 0 0 0;
     text-align: center;
+    user-select: none;
 }
 
 div.row > div {
@@ -13,6 +14,7 @@ div.row > div {
     clear: both;
     margin: 0 auto;
     width: 302px;
+    font-size: 75px;
 }
 
 .top {
