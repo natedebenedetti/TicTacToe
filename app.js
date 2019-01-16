@@ -4,6 +4,7 @@ let players = ["Player A", "Player B"];
 let markers = ["X", "O"];
 let whoseTurn = 0;
 let clickCount = 0;
+let gameOver = false;
 
 
 //banner message at beginning of the game explaining the rules
@@ -15,11 +16,15 @@ squares.forEach(function (row) {
 });
 
 function rowClicked(e) {
+    if (gameOver === true) {
+        return;
+    }
     if (e.target.textContent == "") {
         e.target.textContent = markers[whoseTurn];
         turn();
         clickCount++;
         checkWin();
+
     }
 }
 //alternates back and forth between player A and player B (X and O)
@@ -35,14 +40,25 @@ function turn() {
 function checkWin() {
     if (squares[0].textContent + squares[1].textContent + squares[2].textContent === "XXX" || squares[3].textContent + squares[4].textContent + squares[5].textContent === "XXX" || squares[6].textContent + squares[7].textContent + squares[8].textContent === "XXX" || squares[0].textContent + squares[4].textContent + squares[8].textContent === "XXX" || squares[2].textContent + squares[4].textContent + squares[6].textContent === "XXX" || squares[0].textContent + squares[3].textContent + squares[6].textContent === "XXX" || squares[2].textContent + squares[5].textContent + squares[8].textContent === "XXX" || squares[1].textContent + squares[4].textContent + squares[7].textContent === "XXX") {
         document.getElementById('game-message').textContent = "Player A Wins!";
+        gameOver = true;
 
     } else if (squares[0].textContent + squares[1].textContent + squares[2].textContent === "OOO" || squares[3].textContent + squares[4].textContent + squares[5].textContent === "OOO" || squares[6].textContent + squares[7].textContent + squares[8].textContent === "OOO" || squares[0].textContent + squares[4].textContent + squares[8].textContent === "OOO" || squares[2].textContent + squares[4].textContent + squares[6].textContent === "OOO" || squares[0].textContent + squares[3].textContent + squares[6].textContent === "OOO" || squares[2].textContent + squares[5].textContent + squares[8].textContent === "OOO" || squares[1].textContent + squares[4].textContent + squares[7].textContent === "OOO") {
         document.getElementById('game-message').textContent = "Player B Wins!";
+        gameOver = true;
 
     } else if (clickCount === 9) {
         document.getElementById('game-message').textContent = "IT'S A DRAW!";
+        gameOver = true;
     }
 }
+
+function startOver() {
+    squares.forEach(function (row) {
+        row.addEventListener('click', rowClicked);
+        row.textContent = "";
+    });
+}
+    
 
 
 

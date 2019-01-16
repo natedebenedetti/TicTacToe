@@ -33,6 +33,13 @@ div.row > div {
     border-right: 1px black solid;
 }
 
+.btn {
+    clear:  both;
+    display: block;
+    align-items: center;
+    margin: auto;
+}
+
 
 
 
