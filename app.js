@@ -5,10 +5,11 @@ let markers = ["X", "O"];
 let whoseTurn = 0;
 let clickCount = 0;
 let gameOver = false;
+let element1 = document.getElementById("game-message");
 
 
 //banner message at beginning of the game explaining the rules
-alert("Player A place's an X in the first square to begin.");
+alert("Player A place's an X first square to begin.");
 
 //click event 
 squares.forEach(function (row) {
@@ -18,8 +19,7 @@ squares.forEach(function (row) {
 function rowClicked(e) {
     if (gameOver === true) {
         return;
-    }
-    if (e.target.textContent == "") {
+    } else if (e.target.textContent == "") {
         e.target.textContent = markers[whoseTurn];
         turn();
         clickCount++;
@@ -34,6 +34,7 @@ function turn() {
 
     //message displayed in place of "tic tac toe" title that states who's turn it is
     document.getElementById('game-message').textContent = players[whoseTurn] + "'s" + " turn";
+
 }
 
 //Every Possible outcome and the appropriate response.
@@ -53,12 +54,17 @@ function checkWin() {
 }
 
 function startOver() {
+    gameOver = true;
+    whoseTurn = 0;
+    document.getElementById('game-message').textContent = "Tic Tac Toe";
+    alert("Player A Start With 'X'");
     squares.forEach(function (row) {
         row.addEventListener('click', rowClicked);
         row.textContent = "";
     });
+    gameOver = false;
 }
-    
+
 
 
 
