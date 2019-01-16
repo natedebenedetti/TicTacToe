@@ -5,6 +5,7 @@ let markers = ["X", "O"];
 let whoseTurn = 0;
 let clickCount = 0;
 
+
 //banner message at beginning of the game explaining the rules
 alert("Player A place's an X in the first square to begin.");
 
@@ -42,6 +43,8 @@ function checkWin() {
         document.getElementById('game-message').textContent = "IT'S A DRAW!";
     }
 }
+
+
 
 
 
