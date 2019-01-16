@@ -1,16 +1,17 @@
-let rows = document.querySelectorAll(".row");
-
-// create players
-
+let squares = document.querySelectorAll(".row > div");
+console.log(squares);
 let players = ["Player A", "Player B"];
 let markers = ["X", "O"];
 let whoseTurn = 0;
 
-// play the game
+
+
+
+
 alert("LET'S PLAY! Player A Goes First.");
 
 
-rows.forEach(function (row) {
+squares.forEach(function (row) {
     row.addEventListener('click', rowClicked);
 });
 
@@ -18,17 +19,25 @@ function rowClicked(e) {
     if (e.target.textContent == "") {
         e.target.textContent = markers[whoseTurn];
         turn();
+        checkWin();
     } else {
     }
 }
-
-// Keep track of whose turn
 
 function turn() {
     if (whoseTurn == 0) whoseTurn = 1;
     else whoseTurn = 0;
 
     document.getElementById('game-message').textContent = players[whoseTurn] + "'s" + " turn";
+}
+
+//Every Possible Combonation for Player or A or B to win
+function checkWin() { 
+    if (squares[0].textContent + squares[1].textContent + squares[2].textContent ==="XXX" || squares[3].textContent + squares[4].textContent + squares[5].textContent === "XXX" || squares[6].textContent + squares[7].textContent + squares[8].textContent === "XXX" || squares[0].textContent + squares[4].textContent + squares[8].textContent === "XXX" || squares[2].textContent + squares[4].textContent + squares[6].textContent === "XXX" || squares[0].textContent + squares[3].textContent + squares[6].textContent === "XXX" || squares[2].textContent + squares[5].textContent + squares[8].textContent === "XXX") {
+        alert("Player A Wins!");
+    } else if (squares[0].textContent + squares[1].textContent + squares[2].textContent ==="OOO" || squares[3].textContent + squares[4].textContent + squares[5].textContent === "OOO" || squares[6].textContent + squares[7].textContent + squares[8].textContent === "OOO" || squares[0].textContent + squares[4].textContent + squares[8].textContent === "OOO" || squares[2].textContent + squares[4].textContent + squares[6].textContent === "OOO" || squares[0].textContent + squares[3].textContent + squares[6].textContent === "OOO" || squares[2].textContent + squares[5].textContent + squares[8].textContent === "OOO") {
+        alert("Player B Wins!");
+    }
 }
 
 //win algorithm
