@@ -5,8 +5,7 @@ let markers = ["X", "O"];
 let whoseTurn = 0;
 let clickCount = 0;
 let gameOver = false;
-let element1 = document.getElementById("game-message");
-
+let elem = document.getElementById('game-message');
 
 //banner message at beginning of the game explaining the rules
 alert("Player A place's an X first square to begin.");
@@ -22,20 +21,24 @@ function rowClicked(e) {
     } else if (e.target.textContent == "") {
         e.target.textContent = markers[whoseTurn];
         turn();
-        clickCount++;
         checkWin();
 
     }
 }
-//alternates back and forth between player A and player B (X and O)
+//alternates back and forth between player A and player B (X and O) and adds their name in different colors
 function turn() {
-    if (whoseTurn == 0) whoseTurn = 1;
-    else whoseTurn = 0;
-
-    //message displayed in place of "tic tac toe" title that states who's turn it is
-    document.getElementById('game-message').textContent = players[whoseTurn] + "'s" + " turn";
-
+    if (whoseTurn == 0) {
+        elem.innerHTML = players[whoseTurn] + "'s Turn";
+        elem.style.color = "Red"; players[whoseTurn] + "'s" + " turn";
+        whoseTurn = 1;
+    } else {
+        elem.innerHTML = players[whoseTurn] + "'s Turn";
+        elem.style.color = "Blue"; players[whoseTurn] + "'s" + " turn";
+        whoseTurn = 0;
+    }
 }
+
+
 
 //Every Possible outcome and the appropriate response.
 function checkWin() {
