@@ -24,7 +24,6 @@ function rowClicked(e) {
         e.target.textContent = markers[whoseTurn];
         turn();
         checkWin();
-
     }
 }
 //alternates back and forth between player A and player B (X and O)
@@ -34,7 +33,16 @@ function turn() {
 
     //message displayed in place of "tic tac toe" title that states who's turn it is
     document.getElementById('game-message').textContent = players[whoseTurn] + " goes next";
+    nameColor();
 
+}
+
+function nameColor() {
+    if (whoseTurn === 0) {
+    document.getElementById('game-message').style.color = "blue";
+    } else if (whoseTurn === 1) {
+        document.getElementById('game-message').style.color = "red";
+    }
 }
 
 //Every Possible outcome and the appropriate response.
@@ -42,11 +50,13 @@ function checkWin() {
     if (squares[0].textContent + squares[1].textContent + squares[2].textContent === "XXX" || squares[3].textContent + squares[4].textContent + squares[5].textContent === "XXX" || squares[6].textContent + squares[7].textContent + squares[8].textContent === "XXX" || squares[0].textContent + squares[4].textContent + squares[8].textContent === "XXX" || squares[2].textContent + squares[4].textContent + squares[6].textContent === "XXX" || squares[0].textContent + squares[3].textContent + squares[6].textContent === "XXX" || squares[2].textContent + squares[5].textContent + squares[8].textContent === "XXX" || squares[1].textContent + squares[4].textContent + squares[7].textContent === "XXX") {
         document.getElementById('game-message').style.color = "blue";
         document.getElementById('game-message').textContent = "Player A Wins!!";
+        document.getElementById('button1').style.color = "blue";
         gameOver = true;
 
     } else if (squares[0].textContent + squares[1].textContent + squares[2].textContent === "OOO" || squares[3].textContent + squares[4].textContent + squares[5].textContent === "OOO" || squares[6].textContent + squares[7].textContent + squares[8].textContent === "OOO" || squares[0].textContent + squares[4].textContent + squares[8].textContent === "OOO" || squares[2].textContent + squares[4].textContent + squares[6].textContent === "OOO" || squares[0].textContent + squares[3].textContent + squares[6].textContent === "OOO" || squares[2].textContent + squares[5].textContent + squares[8].textContent === "OOO" || squares[1].textContent + squares[4].textContent + squares[7].textContent === "OOO") {
         document.getElementById('game-message').style.color = "red";
         document.getElementById('game-message').textContent = "Player B Wins!!";
+        document.getElementById('button1').style.color = "red";
         gameOver = true;
 
     } else if (clickCount === 9) {
@@ -58,6 +68,7 @@ function checkWin() {
 
 function startOver() {
     document.getElementById('game-message').style.color = "white";
+    document.getElementById('button1').style.color = "black";
     clickCount = 0;
     gameOver = true;
     whoseTurn = 0;
