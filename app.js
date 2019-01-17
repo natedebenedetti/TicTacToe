@@ -5,10 +5,11 @@ let markers = ["X", "O"];
 let whoseTurn = 0;
 let clickCount = 0;
 let gameOver = false;
-let elem = document.getElementById('game-message');
+let element1 = document.getElementById("game-message");
+
 
 //banner message at beginning of the game explaining the rules
-alert("Player A place's an X first square to begin.");
+alert("WANT TO PLAY A GAME?   Player A Start by placing an X anywhere on the board.");
 
 //click event 
 squares.forEach(function (row) {
@@ -16,6 +17,7 @@ squares.forEach(function (row) {
 });
 
 function rowClicked(e) {
+    clickCount++;
     if (gameOver === true) {
         return;
     } else if (e.target.textContent == "") {
@@ -25,20 +27,15 @@ function rowClicked(e) {
 
     }
 }
-//alternates back and forth between player A and player B (X and O) and adds their name in different colors
+//alternates back and forth between player A and player B (X and O)
 function turn() {
-    if (whoseTurn == 0) {
-        elem.innerHTML = players[whoseTurn] + "'s Turn";
-        elem.style.color = "Red"; players[whoseTurn] + "'s" + " turn";
-        whoseTurn = 1;
-    } else {
-        elem.innerHTML = players[whoseTurn] + "'s Turn";
-        elem.style.color = "Blue"; players[whoseTurn] + "'s" + " turn";
-        whoseTurn = 0;
-    }
+    if (whoseTurn == 0) whoseTurn = 1;
+    else whoseTurn = 0;
+
+    //message displayed in place of "tic tac toe" title that states who's turn it is
+    document.getElementById('game-message').textContent = players[whoseTurn] + "'s" + " turn";
+
 }
-
-
 
 //Every Possible outcome and the appropriate response.
 function checkWin() {
@@ -57,10 +54,11 @@ function checkWin() {
 }
 
 function startOver() {
+    clickCount = 0;
     gameOver = true;
     whoseTurn = 0;
     document.getElementById('game-message').textContent = "Tic Tac Toe";
-    alert("Player A Start With 'X'");
+    alert("WANT TO PLAY AGAIN?   Player A starts the game again.");
     squares.forEach(function (row) {
         row.addEventListener('click', rowClicked);
         row.textContent = "";
