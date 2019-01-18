@@ -21,7 +21,6 @@ function rowClicked(e) {
     if (gameOver === true) {
         return;
     } else if (e.target.textContent == "") {
-        // try makerColor function here when it is written properly to attempt to get the X or O to be a different color depening on turn
         e.target.textContent = markers[whoseTurn];
         turn();
         checkWin();
@@ -31,29 +30,12 @@ function rowClicked(e) {
 function turn() {
     if (whoseTurn == 0) whoseTurn = 1;
     else whoseTurn = 0;
+    
 
     //message displayed in place of "tic tac toe" title that states who's turn it is
     document.getElementById('game-message').textContent = players[whoseTurn] + " goes next";
-    
-
-}
-
-function nameColor() {
-    if (whoseTurn === 0) {
-    document.getElementById('game-message').style.color = "blue";
-    } else if (whoseTurn === 1) {
-        document.getElementById('game-message').style.color = "red";
-    }
-}
-
-function markerColor() {
-    if (document.getElementById('XO').textContent = "X") {
-        document.getElementById('XO').style.color = "blue";
-    } else if (document.getElementById('XO').textContent = "O") {
-        documentget.getElementById('XO').style.color = "red";
-    }
-}
-
+ 
+ }
 
 //Every Possible outcome and the appropriate response.
 function checkWin() {
@@ -101,8 +83,6 @@ function startOver() {
 
 
 
-
-//reset
 
 
 
