@@ -1,11 +1,10 @@
-//declaration of all variable used
+//declaration of all variables used
 let squares = document.querySelectorAll(".row > div");
 let players = ["Player A", "Player B"];
 let markers = ["X", "O"];
 let whoseTurn = 0;
 let clickCount = 0;
 let gameOver = false;
-
 
 
 //banner message at beginning of the game explaining the rules
@@ -31,14 +30,15 @@ function rowClicked(e) {
 function turn() {
     if (whoseTurn == 0) whoseTurn = 1;
     else whoseTurn = 0;
-    
+
+
 
     //message displayed in place of "tic tac toe" title that states who's turn it is
     document.getElementById('game-message').textContent = players[whoseTurn] + " goes next";
- 
- }
+    
+}
 
-//Every Possible outcome and the appropriate response.
+//Every Possible outcome and the appropriate response. Followed by a way to end the game (gameOver = true)
 function checkWin() {
     if (squares[0].textContent + squares[1].textContent + squares[2].textContent === "XXX" || squares[3].textContent + squares[4].textContent + squares[5].textContent === "XXX" || squares[6].textContent + squares[7].textContent + squares[8].textContent === "XXX" || squares[0].textContent + squares[4].textContent + squares[8].textContent === "XXX" || squares[2].textContent + squares[4].textContent + squares[6].textContent === "XXX" || squares[0].textContent + squares[3].textContent + squares[6].textContent === "XXX" || squares[2].textContent + squares[5].textContent + squares[8].textContent === "XXX" || squares[1].textContent + squares[4].textContent + squares[7].textContent === "XXX") {
         document.getElementById('game-message').style.color = "blue";
@@ -59,7 +59,8 @@ function checkWin() {
     }
 }
 
-function markerColor (e) {
+//changes color of marker (X or O) depending on whose turn it is
+function markerColor(e) {
     if (whoseTurn === 0) {
         e.target.style.color = "blue";
     } else {
@@ -67,9 +68,11 @@ function markerColor (e) {
     }
 }
 
+//sets everything back to original state when "start over" button is clicked
+
 function startOver() {
     document.getElementById('game-message').style.color = "white";
-    document.getElementById('button1').style.color = "black";
+    document.getElementById('button1').style.color = "white";
     clickCount = 0;
     gameOver = true;
     whoseTurn = 0;

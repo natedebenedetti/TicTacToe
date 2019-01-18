@@ -54,6 +54,8 @@ div.row > div {
     font-family: 'Libre Barcode 128 Text', cursive;
     font-size: 3em;
     margin-top: 3em;
+    color: white;
+    background-color: black;
 }
 
 .btn > div {
@@ -65,6 +67,8 @@ div.row > div {
     font-size: 5em;
     color: white;
 }
+
+
 
 
 
