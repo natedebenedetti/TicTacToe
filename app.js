@@ -22,6 +22,7 @@ function rowClicked(e) {
         return;
     } else if (e.target.textContent == "") {
         e.target.textContent = markers[whoseTurn];
+        markerColor(e);
         turn();
         checkWin();
     }
@@ -55,6 +56,14 @@ function checkWin() {
         document.getElementById('game-message').style.color = "white";
         document.getElementById('game-message').textContent = "It's A Draw";
         gameOver = true;
+    }
+}
+
+function markerColor (e) {
+    if (whoseTurn === 0) {
+        e.target.style.color = "blue";
+    } else {
+        e.target.style.color = "red";
     }
 }
 
